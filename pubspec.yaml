@@ -1,6 +1,6 @@
 name: mango_toast
 description: MangoToast is a custom Flutter widget that displays a toast message using Snackbar..
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/pagebook1/mango_toast
 
 environment:
@@ -16,6 +16,13 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
 
+platforms:
+  android:
+  ios:
+  web:
+  windows:
+  macos:
+  linux:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
