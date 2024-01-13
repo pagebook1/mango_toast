@@ -9,26 +9,26 @@ class MangoToast {
   static MangoToastMessage success(String message,
       {Duration duration = const Duration(seconds: 2),
       toastPosition position = toastPosition.center}) {
-    return MangoToastMessage(message, Colors.green, duration, position);
+    return MangoToastMessage(message, Colors.green, duration, position,Icons.check_circle_sharp);
   }
 
   static MangoToastMessage error(String message,
       {Duration duration = const Duration(seconds: 2),
       toastPosition position = toastPosition.center}) {
-    return MangoToastMessage(message, Colors.red, duration, position);
+    return MangoToastMessage(message, Colors.red, duration, position,Icons.error_sharp);
   }
 
   static MangoToastMessage warning(String message,
       {Duration duration = const Duration(seconds: 2),
       toastPosition position = toastPosition.center}) {
     return MangoToastMessage(
-        message, Colors.deepOrangeAccent, duration, position);
+        message, Colors.deepOrangeAccent, duration, position,Icons.warning_sharp);
   }
 
   static MangoToastMessage info(String message,
       {Duration duration = const Duration(seconds: 2),
       toastPosition position = toastPosition.center}) {
-    return MangoToastMessage(message, Colors.blueAccent, duration, position);
+    return MangoToastMessage(message, Colors.blueAccent, duration, position,Icons.info_sharp);
   }
 
   // void dispose(BuildContext context) {
@@ -41,7 +41,8 @@ class MangoToastMessage {
   final Color color;
   final Duration duration;
   final toastPosition position;
-  MangoToastMessage(this.message, this.color, this.duration, this.position);
+  final IconData icon;
+  MangoToastMessage(this.message, this.color, this.duration, this.position,this.icon);
   void show(BuildContext context,
       {Duration duration = const Duration(seconds: 2)}) {
     if (context.mounted) {
@@ -79,14 +80,18 @@ class MangoToastMessage {
       final scaffold = ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Padding(padding: EdgeInsets.only(left: screen_width * .001)),
-            Text(message,
-                style: TextStyle(
-                    fontSize: fontSize,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                    overflow: TextOverflow.ellipsis)),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+                 Icon(icon,size:fontSize * 2,color: Colors.white,),
+            
+            Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+              
+              Text(message,
+                  style: TextStyle(
+                      fontSize: fontSize,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                      overflow: TextOverflow.ellipsis))
+            ]),
             ButtonBar(
               children: [
                 IconButton(
