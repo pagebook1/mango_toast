@@ -45,6 +45,7 @@ class MangoToastMessage {
   void show(BuildContext context,
       {Duration duration = const Duration(seconds: 2)}) {
     if (context.mounted) {
+      ScaffoldMessenger.of(context).removeCurrentSnackBar();
       final screen_height = MediaQuery.of(context).size.height;
       final screen_width = MediaQuery.of(context).size.width;
       double left = .30;
